@@ -1,0 +1,10 @@
+#root{
+  margin-top: 100px;
+}
+body{
+  background:url('../media/spacebg.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  min-height: 100vh;
+  background-attachment: fixed;
+}
