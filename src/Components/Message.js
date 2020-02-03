@@ -3,9 +3,17 @@ import Snackbar from '@material-ui/core/Snackbar';
 import IconButton from '@material-ui/core/IconButton';
 import CloseIcon from '@material-ui/icons/Close';
 import porg from 'media/porg.png';
+import {Store} from 'Store';
 
 export default function SimpleSnackbar() {
-  const [open, setOpen] = React.useState(true);
+  const {state, dispatch} = React.useContext(Store);
+  const [open, setOpen] = React.useState(false);
+
+  React.useEffect(()=>{
+    if(state.message!==undefined){
+      setOpen(true);
+    }
+  })
 
   const handleClick = () => {
     setOpen(true);
@@ -15,7 +23,7 @@ export default function SimpleSnackbar() {
     if (reason === 'clickaway') {
       return;
     }
-
+    dispatch({type:'ADD_INFO', payload:undefined, field:'message'});
     setOpen(false);
   };
 
@@ -29,7 +37,7 @@ export default function SimpleSnackbar() {
         open={open}
         autoHideDuration={3000}
         onClose={handleClose}
-        message="No fun facts for bad guys!"
+        message={state.message}
         action={
           <React.Fragment>
             <img src={porg}/>

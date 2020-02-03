@@ -1,8 +1,7 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import {Paper, Tabs, Tab, withStyles} from '@material-ui/core';
+import {Paper, Tabs, Tab} from '@material-ui/core';
 import {Link, withRouter} from 'react-router-dom';
-import { green, red } from '@material-ui/core/colors';
 
 const useStyles = makeStyles({
   root: {
@@ -11,17 +10,17 @@ const useStyles = makeStyles({
   },
   selectedTab:{
     color:'#eedb01!important'
-  },
-  indicator:{
-    background:'#eedb01'
   }
 });
 
-const CustomTab = withStyles({
-  selected:{
-    color:'#eedb01'
-  }
-})(Tab);
+const tabList =[
+  {label:'Gear', value:'/gear'},
+  {label:'Spaceships', value:'/spaceships'},
+  {label:'Missions', value:'/missions'},
+  {label:'Profile', value:'/profile'},
+  {label:'Fun Facts', value:'/funfacts'}
+]
+
 
 function CenteredTabs(props) {
   const classes = useStyles();
@@ -34,38 +33,15 @@ function CenteredTabs(props) {
   return (
     <Paper className={classes.root}>
       <Tabs
-        value={props.history.location.pathname}
+        value={props.history.location.pathname!=='/'?props.history.location.pathname : false }
         onChange={handleChange}
         indicatorColor="primary"
         textColor="primary"
         centered
-        classes={{ indicator: classes.indicator }}
       >
-        <Tab label="Gear"
-          value="/gear"
-          component={Link}
-          to='/gear'
-        />
-        <Tab label="Spaceships"
-          value="/spaceships"
-          component={Link}
-          to='/spaceships'
-        />
-        <Tab label="Missions"
-          value="/missions"
-          component={Link}
-          to='/missions'
-        />
-        <Tab label="Profile"
-          value="/profile"
-          component={Link}
-          to='/profile'
-        />
-        <Tab label="Did you know?"
-          value="/funfacts"
-          component={Link}
-          to='/funfacts'
-        />
+      {
+        tabList.map((el, key)=> <Tab key={key} label={el.label} value={el.value} component={Link} to={el.value}/>)
+      }
       </Tabs>
     </Paper>
   );

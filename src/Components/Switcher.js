@@ -1,5 +1,5 @@
 import React from 'react';
-import {Switch, Grid, Typography} from '@material-ui/core';
+import {Switch, Grid} from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
 import { green, red } from '@material-ui/core/colors';
 import {Store} from 'Store';

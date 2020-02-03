@@ -24,7 +24,7 @@ export default function ExpansionPanels(props) {
       {
         props.items && props.items.map((item,key)=>{
           return(
-            <ExpansionPanel>
+            <ExpansionPanel key={key}>
               <ExpansionPanelSummary
                 expandIcon={<ExpandMoreIcon />}
                 aria-controls="panel1a-content"
