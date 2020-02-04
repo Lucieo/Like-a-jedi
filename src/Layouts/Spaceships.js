@@ -1,15 +1,15 @@
 import React from 'react';
-import ItemCollection from 'Components/ItemCollection';
-import {Grid} from '@material-ui/core';
+import PageBase from 'Components/PageBase';
+import ItemsCollection from 'Components/ItemsCollection';
 
 
-export default function Spaceships(){
+export default function SpaceShips(){
   return(
-    <div style={{padding:20}}>
-      <Grid container spacing={2}>
-        <ItemCollection collectionType='ships'/>
-      </Grid>
-    </div>
+    <PageBase title="SpaceShips">
+      <ItemsCollection
+        collectionType='slider'
+        collectionName='ship'
+      />
+    </PageBase>
   )
-
 }

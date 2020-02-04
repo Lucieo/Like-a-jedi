@@ -14,75 +14,111 @@ import {ReactComponent as DvArmor} from 'media/equipment/dvArmor.svg';
 const equipment=[
   {
     name:'Darth Vader Armor',
-    type:'dark',
-    protection:70,
-    image:DvArmor
+    mode:'dark',
+    armor:70,
+    attack:0,
+    image:DvArmor,
+    price:200,
+    imageType:'svg'
   },
   {
     name:'Battle Droid',
-    type:'dark',
-    protection:50,
-    image:BattleDroid
+    mode:'dark',
+    armor:50,
+    attack:0,
+    image:BattleDroid,
+    price:120,
+    imageType:'svg'
   },
   {
     name:'Vador Mask',
-    type:'dark',
-    protection:70,
-    image:DarthVaderMask
+    mode:'dark',
+    armor:70,
+    attack:0,
+    image:DarthVaderMask,
+    price:100,
+    imageType:'svg'
   },
   {
     name:'Storm Trooper Blaster',
-    type:'dark',
+    mode:'dark',
     attack:40,
-    image:StBlaster
+    armor:0,
+    image:StBlaster,
+    price:60,
+    imageType:'svg'
   },
   {
     name:'Storm Trooper Mask',
-    type:'dark',
-    protection:40,
-    image:StormTrooperMask
+    mode:'dark',
+    armor:40,
+    attack:0,
+    image:StormTrooperMask,
+    price:40,
+    imageType:'svg'
   },
   {
     name:'Vader Laser Sword',
-    type:'dark',
+    mode:'dark',
     attack:60,
-    image:LaserSword2
+    armor:0,
+    image:LaserSword2,
+    price:140,
+    imageType:'svg'
   },
   {
     name:'Solo Blaster',
-    type:'jedi',
+    mode:'jedi',
     attack:40,
-    image:Blaster
+    armor:0,
+    image:Blaster,
+    price:80,
+    imageType:'svg'
   },
   {
     name:'Ewoke Spear',
-    type:'jedi',
+    mode:'jedi',
     attack:40,
-    image:Spear
+    armor:0,
+    image:Spear,
+    price:30,
+    imageType:'svg'
   },
   {
     name:'Luke Laser Sword',
-    type:'jedi',
+    mode:'jedi',
     attack:70,
-    image:LaserSword
+    armor:0,
+    image:LaserSword,
+    price:140,
+    imageType:'svg'
   },
   {
     name:'Yoda Stick',
-    type:'jedi',
+    mode:'jedi',
     attack:30,
-    image:Stick
+    armor:0,
+    image:Stick,
+    price:20,
+    imageType:'svg'
   },
   {
     name:'Porg',
-    type:'jedi',
-    protection:10,
-    image:Porg
+    mode:'jedi',
+    armor:10,
+    attack:0,
+    image:Porg,
+    price:10,
+    imageType:'svg'
   },
   {
     name:'R2D2',
-    type:'jedi',
-    protection:50,
-    image:R2D2
+    mode:'jedi',
+    armor:50,
+    attack:0,
+    image:R2D2,
+    price:100,
+    imageType:'svg'
   },
 ]
 

@@ -7,7 +7,7 @@ const useStyles = makeStyles(theme => ({
   root: {
     '& > *': {
       margin: theme.spacing(1),
-      fontFamily:'Audiowide, cursive',
+      fontFamily:'Audiowide, sans-serif',
       color:"#f1ebd5!important",
       '& .MuiOutlinedInput-root': {
         '& fieldset': {

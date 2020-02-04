@@ -1,12 +1,15 @@
 import React from 'react';
 import {Grid, Typography, Button} from '@material-ui/core';
-import ItemCollection from 'Components/ItemCollection';
+import ItemsCollection from 'Components/ItemsCollection';
 import {Store} from 'Store';
 import MalePicture from 'media/characters/male.jpg';
 import FemalePicture from 'media/characters/female.jpg';
 import StromTrooperPicture from 'media/characters/stormtrooper.jpg';
+import Warehouse from 'media/spaceships/warehouse.jpg';
 import {OutlinedButton} from 'Components/Buttons';
 import TextForm from 'Components/TextForm';
+import GenderSwitch from 'Components/Profile/GenderSwitch';
+import EmptyCategory from 'Components/Profile/EmptyCategory';
 
 
 const styles ={
@@ -37,6 +40,9 @@ const styles ={
   },
   textCenter:{
     textAlign:'center'
+  },
+  partTitle:{
+    paddingBottom:10
   }
 }
 
@@ -56,44 +62,65 @@ export default (props)=>{
     <Grid container style={styles.content} direction="row"
   justify="center">
       <Grid item sm={4} style={styles.partWrapper}>
+
         <div style={styles.textCenter}>
           <img src={getProfileImage()} style={styles.profilePicture}/>
         </div>
+
         <div style={styles.textCenter}>
           {
             state.name
-            ? <Typography>{state.name}</Typography>
+            ? <Typography style={styles.partTitle}>{state.name}</Typography>
             : <TextForm fieldname='name' placeholder='Your name' color='transparent'/>
           }
         </div>
-        <div style={styles.partWrapper}>
-          <Typography>Gender</Typography>
-          <OutlinedButton variant='outlined' clickAction={()=>dispatch({type:'ADD_INFO', field:'gender', payload:'female'})} text='Female' color='#4dd4c3' active={state.gender==='female'}/>
-          <OutlinedButton variant='outlined' clickAction={()=>dispatch({type:'ADD_INFO', field:'gender', payload:'male'})} text='Male' color='#4dd4c3' active={state.gender==='male'}/>
 
+        <div style={styles.partWrapper}>
+          <Typography style={styles.partTitle}>Gender</Typography>
+          <GenderSwitch/>
         </div>
+
+        <div style={styles.partWrapper}>
+          <Typography style={styles.partTitle}>Credits</Typography>
+          <Typography>{state.credits} GC available</Typography>
+        </div>
+
       </Grid>
+
       <Grid item sm={8} style={styles.partWrapper}>
         <div style={styles.inventoryWrapper}>
           <Typography>Ship</Typography>
           {
             state.ship
-            ?<ItemCollection collectionType='ships' inventoryMode={true}/>
-            :<div style={styles.emptyMessage}>
-              <Typography style={styles.blueColor}>You did not select any ship!</Typography>
-              <OutlinedButton variant='outlined' clickAction={()=>props.history.push('/spaceships')} text='Find a Ship' color='#4dd4c3'/>
-            </div>
+            ?
+            <Grid container>
+              <Grid item sm={4} xs={12}>
+                <img src={state.ship.image} style={{width:'100%'}}/>
+              </Grid>
+              <Grid item sm={8} xs={12} style={styles.partWrapper}>
+                <Typography>{state.ship.name}</Typography>
+              </Grid>
+            </Grid>
+            :<EmptyCategory
+              clickAction={()=>props.history.push('/spaceships')}
+              btnMessage="Select ship"
+              errorMessage="You did not select any ship!"/>
           }
         </div>
+
         <div style={styles.inventoryWrapper}>
           <Typography>Equipment</Typography>
           {
             state.equipment.length>0
-            ?<ItemCollection collectionType='equipment' inventoryMode={true}/>
-            :<div style={styles.emptyMessage}>
-              <Typography style={styles.blueColor}>You did not pick any equipment!</Typography>
-              <OutlinedButton variant='outlined' clickAction={()=>props.history.push('/equipment')} text='Select Equipment' color='#4dd4c3'/>
-            </div>
+            ?<ItemsCollection
+                collectionType='thumbnails'
+                collectionName='equipment'
+                inventoryMode={true}
+              />
+            :<EmptyCategory
+              clickAction={()=>props.history.push('/equipment')}
+              btnMessage="Select equipment"
+              errorMessage="You did not select any equipment!"/>
           }
         </div>
 
@@ -101,11 +128,13 @@ export default (props)=>{
           <Typography>Missions</Typography>
           {
             state.missions.length>0
-            ?<ItemCollection collectionType='missions' inventoryMode={true}/>
-            :<div style={styles.emptyMessage}>
-              <Typography style={styles.blueColor}>You did not realize any mission!</Typography>
-              <OutlinedButton variant='outlined' clickAction={()=>props.history.push('/missions')} text='Discover Missions' color='#4dd4c3'/>
-            </div>
+            ?<ItemsCollection
+              collectionType='missions'
+              inventoryMode={true}/>
+            :<EmptyCategory
+              clickAction={()=>props.history.push('/missions')}
+              btnMessage="Select mission"
+              errorMessage="You did not realize any missions!"/>
           }
         </div>
       </Grid>

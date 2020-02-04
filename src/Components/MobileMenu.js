@@ -30,6 +30,7 @@ export default (props)=>{
               button
               component={props => <Link to={el.value} {...props} />}
               onClick={toggleMobile}
+              key={index}
             >
               <ListItemText primary={el.label} classes={{primary:styles.link}} />
             </ListItem>

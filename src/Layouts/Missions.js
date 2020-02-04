@@ -1,8 +1,26 @@
 import React from 'react';
-import ExpansionPanel from 'Components/ExpansionPanels';
+import PageBase from 'Components/PageBase';
+import ItemsCollection from 'Components/ItemsCollection';
 
-export default ()=>{
+const styles={
+  pad20:{
+    padding:20
+  },
+  partWrapper:{
+    maxWidth:800,
+    padding:20,
+    margin:'0 auto'
+  }
+}
+
+export default function Missions(){
   return(
-    <p>HELLO MISSIONS</p>
+    <PageBase title="Missions">
+      <ItemsCollection
+        collectionType='panel'
+        collectionName='mission'
+      />
+    </PageBase>
   )
+
 }

@@ -1,20 +1,23 @@
 import React from 'react';
 import equipment from 'Data/equipment';
 import ships from 'Data/ships';
+import missions from 'Data/missions';
 
 export const Store = React.createContext();
 
 const initialState = {
   name:undefined,
-  ship: undefined,
+  ship: [],
   equipment:[],
-  missions:[],
+  mission:[],
   mode:'jedi',
   shipCollection:ships,
   equipmentCollection:equipment,
+  missionCollection:missions,
   message:undefined,
   mobileMenuOpen:false,
-  gender:'female'
+  gender:'female',
+  credits:500
 };
 
 let newState;
@@ -27,16 +30,23 @@ function reducer(state, action) {
       return {...state, mode}
 
     case 'TOGGLE_SHIP':
-      if(state.ship && action.payload.name === state.ship.name){
-        return {...state, ship:undefined}
+      if(state.ship.length>0 && action.payload.name === state.ship[0].name){
+        return {...state, ship:[], credits:state.credits+action.payload.price}
       }
-      return {...state, ship:action.payload}
+      return {...state, ship:[action.payload], credits:state.credits-action.payload.price}
 
     case 'TOGGLE_EQUIPMENT':
       if(state.equipment.findIndex(el=>el.name===action.payload.name)>-1){
-        return {...state, equipment:state.equipment.filter(el=>el.name!==action.payload.name)}
+        return {
+          ...state, equipment:state.equipment.filter(el=>el.name!==action.payload.name),
+          credits:state.credits + action.payload.price
+        }
       }
-      return {...state, equipment:[...state.equipment, action.payload]}
+      return {
+        ...state,
+        equipment:[...state.equipment, action.payload],
+        credits:state.credits - action.payload.price
+      }
 
     case 'ADD_MESSAGE':
       return {...state, message:action.payload}
