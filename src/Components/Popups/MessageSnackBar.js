@@ -5,7 +5,7 @@ import CloseIcon from '@material-ui/icons/Close';
 import porg from 'media/porg.png';
 import {Store} from 'Store';
 
-export default function SimpleSnackbar() {
+export default function MessageSnackbar() {
   const {state, dispatch} = React.useContext(Store);
   const [open, setOpen] = React.useState(false);
 

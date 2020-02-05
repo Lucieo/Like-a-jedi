@@ -27,7 +27,7 @@ const styles={
   },
   mainImage:{
     maxWidth:'100%',
-    height:250
+    maxHeight:250
   },
   paper:{
     background:'radial-gradient(rgb(29, 29, 29), rgb(47, 47, 47))',

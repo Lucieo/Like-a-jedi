@@ -17,7 +17,9 @@ const initialState = {
   message:undefined,
   mobileMenuOpen:false,
   gender:'female',
-  credits:500
+  credits:500,
+  points:0,
+  dialog:{title:'You are such a lucky one!', text:'Mission did go well. Not a single scratch! Congratulation you are earning 100 points of experience!', type:'lucky'}
 };
 
 let newState;

@@ -7,10 +7,11 @@ import Header from 'Layouts/Header';
 import Profile from 'Layouts/Profile';
 import Missions from 'Layouts/Missions';
 import Funfacts from 'Layouts/Funfacts';
-import Message from 'Components/Message';
+import MessageSnackbar from 'Components/Popups/MessageSnackBar';
+import MessageDialog from 'Components/Popups/MessageDialog';
 import "Styles/App.css";
 import {ThemeProvider } from '@material-ui/core/styles';
-import theme from 'Layouts/Theme';
+import theme from 'Styles/Theme';
 
 
 function App() {
@@ -24,7 +25,8 @@ function App() {
         <Route path='/profile' component={Profile}/>
         <Route path='/missions' component={Missions}/>
         <Route path='/funfacts' component={Funfacts}/>
-        <Message/>
+        <MessageSnackbar/>
+        <MessageDialog/>
       </div>
     </ThemeProvider>
   );

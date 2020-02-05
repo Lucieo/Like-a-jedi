@@ -2,6 +2,7 @@ import React from 'react';
 import {Grid, ExpansionPanel, ExpansionPanelSummary, ExpansionPanelDetails, Typography, makeStyles} from '@material-ui/core';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import StarIcon from '@material-ui/icons/Star';
+import {OutlinedButton} from 'Components/Buttons';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -19,6 +20,9 @@ const useStyles = makeStyles(theme => ({
   },
   image:{
     maxWidth:'100%'
+  },
+  missionBody:{
+    padding:20
   }
 }));
 
@@ -50,9 +54,13 @@ export default function ExpansionCard({item}) {
             <img src={item.image} className={classes.image}/>
           </Grid>
           <Grid item>
-            <Typography variant='body2'>
+            <Typography variant='body2' className={classes.missionBody}>
               {item.detail}
             </Typography>
+            <OutlinedButton
+              text='Start Mission'
+              color='rgb(77, 212, 195)'
+            />
           </Grid>
         </Grid>
       </ExpansionPanelDetails>

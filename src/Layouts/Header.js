@@ -1,5 +1,4 @@
 import React from 'react';
-import TabBar from 'Components/TabBar';
 import Switcher from 'Components/Switcher';
 import {AppBar, Grid, Typography, Hidden, withStyles, makeStyles} from '@material-ui/core';
 import {Link} from 'react-router-dom';

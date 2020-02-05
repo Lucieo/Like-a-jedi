@@ -5,11 +5,11 @@ import {Store} from 'Store';
 import MalePicture from 'media/characters/male.jpg';
 import FemalePicture from 'media/characters/female.jpg';
 import StromTrooperPicture from 'media/characters/stormtrooper.jpg';
-import Warehouse from 'media/spaceships/warehouse.jpg';
 import {OutlinedButton} from 'Components/Buttons';
 import TextForm from 'Components/TextForm';
 import GenderSwitch from 'Components/Profile/GenderSwitch';
 import EmptyCategory from 'Components/Profile/EmptyCategory';
+import AttributesList from 'Components/AttributesList';
 
 
 const styles ={
@@ -62,7 +62,6 @@ export default (props)=>{
     <Grid container style={styles.content} direction="row"
   justify="center">
       <Grid item sm={4} style={styles.partWrapper}>
-
         <div style={styles.textCenter}>
           <img src={getProfileImage()} style={styles.profilePicture}/>
         </div>
@@ -85,20 +84,26 @@ export default (props)=>{
           <Typography>{state.credits} GC available</Typography>
         </div>
 
+        <div style={styles.partWrapper}>
+          <Typography style={styles.partTitle}>Experience</Typography>
+          <Typography>{state.points} points earned</Typography>
+        </div>
+
       </Grid>
 
       <Grid item sm={8} style={styles.partWrapper}>
         <div style={styles.inventoryWrapper}>
           <Typography>Ship</Typography>
           {
-            state.ship
+            state.ship.length>0
             ?
-            <Grid container>
-              <Grid item sm={4} xs={12}>
-                <img src={state.ship.image} style={{width:'100%'}}/>
+            <Grid container alignItems='center'>
+              <Grid item sm={6} xs={12}>
+                <img src={state.ship[0].image} style={{width:'100%'}}/>
               </Grid>
-              <Grid item sm={8} xs={12} style={styles.partWrapper}>
-                <Typography>{state.ship.name}</Typography>
+              <Grid item sm={6} xs={12} style={styles.partWrapper}>
+                <Typography>{state.ship[0].name}</Typography>
+                <AttributesList attributes={['attack','armor']} item={state.ship[0]}/>
               </Grid>
             </Grid>
             :<EmptyCategory
@@ -127,7 +132,7 @@ export default (props)=>{
         <div style={styles.inventoryWrapper}>
           <Typography>Missions</Typography>
           {
-            state.missions.length>0
+            state.mission.length>0
             ?<ItemsCollection
               collectionType='missions'
               inventoryMode={true}/>

@@ -5,6 +5,7 @@ import ItemThumbnailCollection from 'Components/Collections/ItemThumbnailCollect
 import ItemPanelCollection from 'Components/Collections/ItemPanelCollection';
 import {Store} from 'Store';
 import {Grid, Typography} from '@material-ui/core';
+import {getRandomInt, getTotalPoints} from 'helpers';
 
 const actions={
   'ship':'TOGGLE_SHIP',
@@ -14,7 +15,8 @@ const actions={
 export default function ItemsCollection ({
   collectionType,
   collectionName,
-  inventoryMode}
+  inventoryMode,
+  clickAction}
 ){
   const {state, dispatch} = React.useContext(Store);
 
@@ -27,23 +29,39 @@ export default function ItemsCollection ({
   const getClickAction = (item)=>{
     let errorMessage=undefined;
     const isItemSelected = isSelected(item);
+    if(clickAction){
+      return clickAction
+    }
+    else if(['ship', 'equipment'].includes(collectionName)){
+      return toggleItem(item, isItemSelected);
+    }
+    else if(collectionName==='mission'){
+      return selectMission(item);
+    }
+  }
 
-    if(['ship', 'equipment'].includes(collectionName)){
-      if(!isItemSelected && item.price>state.credits){
-        errorMessage='Insufficient credits!';
-      }
-      else{
-        return dispatch({
+  const selectMission =(item)=>{
+    const luck = getRandomInt(20);
+    const totalArmor = getTotalPoints([state.equipment, state.ship], 'armor');
+    const totalAttack = getTotalPoints([state.equipment, state.ship], 'attack');
+
+  }
+
+  const toggleItem=(item, selected)=>{
+    if(!selected && item.price>state.credits){
+      return sendMessage('Insufficient credits!', 'message')
+    }
+    return dispatch({
           type:actions[collectionName],
           payload:item})
-      }
-    }
-    if(errorMessage){
-      return dispatch({
+  }
+
+
+  const sendMessage=(message, field)=>{
+    return dispatch({
         type:'ADD_INFO',
-        payload:errorMessage,
-        field:'message'})
-    }
+        payload:message,
+        field})
   }
 
   const isSelected = (item)=>{
