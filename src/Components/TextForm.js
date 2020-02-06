@@ -1,8 +1,7 @@
 import React from 'react';
-import {TextField, FormControl, Button, Grid, makeStyles} from '@material-ui/core';
+import {TextField, Grid, makeStyles} from '@material-ui/core';
 import {Store} from 'Store';
 import {OutlinedButton} from 'Components/Buttons';
-import styles from 'Style/AppStyle';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -28,7 +27,7 @@ const useStyles = makeStyles(theme => ({
 
 export default function TextForm(props) {
   const classes = useStyles();
-  const {store, dispatch} = React.useContext(Store);
+  const {state, dispatch} = React.useContext(Store);
   const [name, setValue] = React.useState(undefined);
 
   const handleClick=()=>{
@@ -42,7 +41,7 @@ export default function TextForm(props) {
   const handleChange = event => {
     setValue(event.target.value);
   };
-  
+
 
   return (
     <Grid

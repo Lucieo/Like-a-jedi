@@ -1,7 +1,6 @@
 import React from 'react';
 import {SliderCollection, PanelCollection, ListCollection, ThumbnailCollection} from 'Components/Collections';
 import {Store} from 'Store';
-import {Grid, Typography} from '@material-ui/core';
 import {launchMission} from 'helpers';
 
 const actions={
@@ -24,7 +23,6 @@ export default function ItemsCollection ({
   }
 
   const getClickAction = (item)=>{
-    let errorMessage=undefined;
     const isItemSelected = isSelected(item);
     if(clickAction){
       return clickAction

@@ -1,8 +1,5 @@
 import React from 'react';
-import {Grid, Typography, Button} from '@material-ui/core';
-import ItemsCollection from 'Components/ItemsCollection';
-import {Store} from 'Store';
-import {OutlinedButton} from 'Components/Buttons';
+import {Grid} from '@material-ui/core';
 import {CharacterInfos, Inventory} from 'Components/Profile';
 import styles from 'Style/AppStyle.js';
 
@@ -10,7 +7,7 @@ export default ()=>{
   return(
     <Grid
     container
-    style={styles.pageWrapper} 
+    style={styles.pageWrapper}
     direction="row"
     justify="center">
       <Grid item sm={4} xs={12} style={styles.partWrapper}>

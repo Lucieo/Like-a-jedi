@@ -8,7 +8,6 @@ export default function ListCollection({
   clickAction,
   selected
 }){
-  console.log(selected)
   return(
     <Grid container>
     {

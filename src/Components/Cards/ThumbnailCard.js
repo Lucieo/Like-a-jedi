@@ -40,7 +40,7 @@ export default function ThumbnailCard({item, selected, clickAction, focus}){
       {
         item.imageType==='svg'
         ?<SvgIcon style={styles.svgIcon} fill={'rgb(77, 212, 195)'}/>
-        :<img style={styles.svgIcon} src={item.image}/>
+        :<img style={styles.svgIcon} src={item.image} alt='icon'/>
       }
     </div>
   )

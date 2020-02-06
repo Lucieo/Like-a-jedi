@@ -1,11 +1,12 @@
 import React from 'react';
 import Switcher from 'Components/Switcher';
-import {AppBar, Grid, Typography, Hidden, withStyles, makeStyles} from '@material-ui/core';
+import {AppBar, Grid, Typography, Hidden, makeStyles} from '@material-ui/core';
 import {Link} from 'react-router-dom';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import {Store} from 'Store';
 import MobileMenu from 'Components/MobileMenu';
+import { withRouter } from 'react-router';
 
 
 const navElements =[
@@ -26,6 +27,9 @@ const useStyles = makeStyles(theme=>({
   appbar:{
     background:'#1d1d1d',
   },
+  transparentBar:{
+    background:'transparent'
+  },
   menuLink:{
     textDecoration:'none',
     padding:"0px 10px",
@@ -42,16 +46,15 @@ const useStyles = makeStyles(theme=>({
 }));
 
 
-export default ()=>{
+export default withRouter((props)=>{
   const classes = useStyles();
   const {state, dispatch} = React.useContext(Store);
-
   const handleMobileMenu = ()=>{
     dispatch({type:'TOGGLE_INFO', field:'mobileMenuOpen'})
   }
 
   return(
-    <AppBar className={classes.appbar}>
+    <AppBar className={props.location.pathname==='/' ? classes.transparentBar : classes.appbar}>
       <Grid
         container
         alignItems='center'
@@ -108,4 +111,4 @@ export default ()=>{
       </Hidden>
     </AppBar>
   )
-}
+})

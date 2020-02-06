@@ -1,15 +1,5 @@
-import {ReactComponent as Blaster} from 'media/equipment/blasterSolo.svg';
-import {ReactComponent as DarthVaderMask} from 'media/equipment/darthvader.svg';
-import {ReactComponent as Spear} from 'media/equipment/spear.svg';
-import {ReactComponent as Stick} from 'media/equipment/stick.svg';
-import {ReactComponent as LaserSword2} from 'media/equipment/lasersword3.svg';
-import {ReactComponent as LaserSword} from 'media/equipment/lasersword2.svg';
-import {ReactComponent as StormTrooperMask} from 'media/equipment/stormtrooper.svg';
-import {ReactComponent as Porg} from 'media/equipment/porg.svg';
-import {ReactComponent as R2D2} from 'media/equipment/r2d2.svg';
-import {ReactComponent as StBlaster} from 'media/equipment/stblaster.svg';
-import {ReactComponent as BattleDroid} from 'media/equipment/battledroid.svg';
-import {ReactComponent as DvArmor} from 'media/equipment/dvArmor.svg';
+import {DvArmor, BattleDroid,DarthVader, StBlaster, StormTrooperMask, LaserSword, LaserSword2, Stick, Porg, R2D2,BlasterSolo, Spear} from 'media/icons';
+
 
 const equipment=[
   {
@@ -25,7 +15,7 @@ const equipment=[
     name:'Battle Droid',
     mode:'dark',
     armor:50,
-    attack:0,
+    attack:30,
     image:BattleDroid,
     price:120,
     imageType:'svg'
@@ -35,7 +25,7 @@ const equipment=[
     mode:'dark',
     armor:70,
     attack:0,
-    image:DarthVaderMask,
+    image:DarthVader,
     price:100,
     imageType:'svg'
   },
@@ -71,7 +61,7 @@ const equipment=[
     mode:'jedi',
     attack:40,
     armor:0,
-    image:Blaster,
+    image:BlasterSolo,
     price:80,
     imageType:'svg'
   },
@@ -115,7 +105,7 @@ const equipment=[
     name:'R2D2',
     mode:'jedi',
     armor:50,
-    attack:0,
+    attack:20,
     image:R2D2,
     price:100,
     imageType:'svg'

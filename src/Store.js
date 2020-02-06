@@ -20,7 +20,7 @@ const initialState = {
   credits:500,
   points:0,
   dialog:undefined,
-  life:80,
+  life:100,
   location:'thyferra',
   dead:false
 };

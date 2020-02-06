@@ -1,5 +1,4 @@
 import thyferra from 'media/missions/thyferra.jpeg';
-import yavinfour from 'media/missions/yavinfour.jpg';
 import delrakkin from 'media/missions/delrakkin.jpg';
 import tattoine from 'media/missions/tattoine.jpg';
 import togoria from 'media/missions/togoria.jpg';
@@ -63,7 +62,9 @@ const missions=[
     level:3,
     image:togoria,
     'credit-bonus':900,
-    'experience-bonus':170
+    'experience-bonus':170,
+    attack:100,
+    armor:120
   },
   {
     title:'Revolt of the Battle Droids',
@@ -73,7 +74,9 @@ const missions=[
     level:3,
     image:boonda,
     'credit-bonus':950,
-    'experience-bonus':180
+    'experience-bonus':180,
+    attack:140,
+    armor:120
   },
   {
     title:'The Vactooine Disaster',
@@ -83,7 +86,9 @@ const missions=[
     level:3,
     image:vactooine,
     'credit-bonus':900,
-    'experience-bonus':200
+    'experience-bonus':200,
+    attack:200,
+    armor:300
   }
 
 

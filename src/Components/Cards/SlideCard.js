@@ -76,7 +76,7 @@ export default function SlideCard({
           {
             item.imageType==='svg'
             ?<SvgIcon style={styles.mainImage} fill={'rgb(77, 212, 195)'}/>
-            :<img src={item.image} style={styles.mainImage}/>
+            :<img src={item.image} style={styles.mainImage} alt='item'/>
           }
           <Typography variant="h3">
             {item.name}

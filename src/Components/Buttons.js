@@ -1,6 +1,5 @@
 import React from 'react';
-import {Button, makeStyles} from '@material-ui/core';
-import {Luck} from 'media/icons';
+import {Button} from '@material-ui/core';
 
 
 const OutlinedButton=(props)=> {

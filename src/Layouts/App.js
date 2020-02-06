@@ -1,12 +1,6 @@
 import React from 'react';
 import {Route} from 'react-router-dom';
-import Home from 'Layouts/Home';
-import Spaceships from 'Layouts/Spaceships';
-import Equipment from 'Layouts/Equipment';
-import Header from 'Layouts/Header';
-import Profile from 'Layouts/Profile';
-import Missions from 'Layouts/Missions';
-import Funfacts from 'Layouts/Funfacts';
+import {Home, Header, Equipment, Spaceships, Profile, Missions, Funfacts, Credits} from 'Layouts';
 import MessageSnackbar from 'Components/Popups/MessageSnackBar';
 import {MessageDialog} from 'Components/Popups/MessageDialog';
 import "Style/App.css";
@@ -25,6 +19,7 @@ function App() {
         <Route path='/profile' component={Profile}/>
         <Route path='/missions' component={Missions}/>
         <Route path='/funfacts' component={Funfacts}/>
+        <Route path='/credits' component={Credits}/>
         <MessageSnackbar/>
         <MessageDialog/>
       </div>

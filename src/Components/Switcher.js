@@ -21,11 +21,6 @@ const CustomSwitch = withStyles({
   }
 })(Switch);
 
-const styles = {
-  disabledIcon:{
-    opacity:0.4
-  }
-}
 
 export default function Switcher() {
   const {state, dispatch} = React.useContext(Store);

@@ -1,5 +1,4 @@
 import React from 'react';
-import {Grid, Typography, Button} from '@material-ui/core';
 import {OutlinedButton} from 'Components/Buttons';
 import {Store} from 'Store';
 

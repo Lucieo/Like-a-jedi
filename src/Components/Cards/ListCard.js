@@ -1,6 +1,6 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import {Grid, Card, CardActionArea, CardContent, CardMedia, Typography, List, ListItem, ListItemText} from '@material-ui/core';
+import {Grid, Card, CardActionArea, CardContent, Typography} from '@material-ui/core';
 import AttributesList from 'Components/AttributesList';
 
 const useStyles = makeStyles({
@@ -25,8 +25,6 @@ const useStyles = makeStyles({
     color:'rgb(77, 212, 195)'
   }
 });
-
-const attributes = ['armor', 'attack']
 
 export default function ListCard({
   item,

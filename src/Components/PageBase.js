@@ -16,7 +16,10 @@ export default function PageBase(props){
           </Typography>
         </Grid>
         <Grid item>
-          <Typography>{state.credits} GC available / {state.life}% health</Typography>
+        {
+          !props.hideInfo &&
+            <Typography>{state.credits} GC available / {state.life}% health</Typography>
+        }
         </Grid>
       </Grid>
         {props.children}

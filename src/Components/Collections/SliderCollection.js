@@ -1,7 +1,7 @@
 import React from 'react';
 import ThumbnailCard from 'Components/Cards/ThumbnailCard';
 import SlideCard from 'Components/Cards/SlideCard';
-import {Typography, Grid} from '@material-ui/core';
+import {Grid} from '@material-ui/core';
 
 export default function SliderCollection({collection, clickAction, selected}){
   const [current, setCurrent]=React.useState(0);

@@ -1,7 +1,7 @@
 import React from 'react';
 import {EmptyCategory} from 'Components/Profile';
 import AttributesList from 'Components/AttributesList';
-import {Typography, Grid, List, ListItem, ListItemText, ListItemIcon} from '@material-ui/core';
+import {Typography, Grid, List, ListItem, ListItemText} from '@material-ui/core';
 import {Store} from 'Store';
 import { withRouter } from "react-router";
 import ItemsCollection from 'Components/ItemsCollection';
@@ -32,7 +32,7 @@ export default withRouter(function Inventory(props){
         ?
         <Grid container alignItems='center'>
           <Grid item sm={6} xs={12}>
-            <img src={state.ship[0].image} style={{width:'100%'}}/>
+            <img src={state.ship[0].image} style={{width:'100%'}} alt='ship'/>
           </Grid>
           <Grid item sm={6} xs={12} style={styles.contentWrapper}>
             <Typography>{state.ship[0].name}</Typography>

@@ -1,5 +1,5 @@
 import React from 'react';
-import {Grid, Typography, Button} from '@material-ui/core';
+import {Typography} from '@material-ui/core';
 import {OutlinedButton} from 'Components/Buttons';
 
 export default function EmptyCategory({errorMessage, clickAction, btnMessage}){

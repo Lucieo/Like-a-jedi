@@ -1,5 +1,5 @@
 import React from 'react';
-import {Typography, Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, Slide, Grid} from '@material-ui/core';
+import {Typography, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, Slide, Grid} from '@material-ui/core';
 import {Store} from 'Store';
 import {OutlinedButton} from 'Components/Buttons';
 import {WinDamaged, LoseDamaged, Cup, Dead, Lose} from 'media/icons';
@@ -27,7 +27,6 @@ const styles={
 }
 
 const getIcon = (type, color, size)=>{
-  console.log(color)
   switch (type) {
     case 'win':
       return <Cup style={{maxWidth:(size || 60)}} fill={color}/>
@@ -55,11 +54,7 @@ const MessageDialog = withRouter((props)=>{
     if(state.dialog!==undefined){
       setOpen(true);
     }
-  })
-
-  const handleClickOpen = () => {
-    setOpen(true);
-  };
+  }, [state.dialog])
 
   const handleClose = () => {
     dispatch({

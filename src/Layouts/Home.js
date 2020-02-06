@@ -1,12 +1,13 @@
 import React from 'react';
 import {Store} from 'Store';
-import {Typography, Grid, Button} from '@material-ui/core';
+import {Typography, Grid} from '@material-ui/core';
 import logo from 'media/starwarslogo.png';
 import TextForm from 'Components/TextForm';
 import {OutlinedButton} from 'Components/Buttons';
 import StarsMovie from 'media/Stars.mp4';
 import StarsBg from 'media/spacebg.jpg';
 import styles from 'Style/AppStyle';
+import {Link} from 'react-router-dom';
 
 export default function Home(props){
   const {state, dispatch} = React.useContext(Store);
@@ -56,6 +57,9 @@ export default function Home(props){
           </div>
             {getAction()}
         </Grid>
+        <Link to='/credits'>
+          <Typography align='center'>Thanks!</Typography>
+        </Link>
       </div>
 
     )

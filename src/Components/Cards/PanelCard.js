@@ -69,7 +69,7 @@ export default function ExpansionCard({
         <Grid container>
           <Grid item>
             <AttributesList attributes={['location','credit-bonus', 'experience-bonus']} item={item}/>
-            <img src={item.image} className={classes.image}/>
+            <img src={item.image} className={classes.image} alt='item'/>
           </Grid>
           <Grid item>
             <Typography variant='body2' className={classes.missionBody}>

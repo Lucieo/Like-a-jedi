@@ -8,7 +8,10 @@ import FemalePicture from 'media/characters/female.jpg';
 import StromTrooperPicture from 'media/characters/stormtrooper.jpg';
 import {OutlinedButton} from 'Components/Buttons';
 import styles from 'Style/AppStyle.js';
-
+import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
+import AttachMoneyIcon from '@material-ui/icons/AttachMoney';
+import EmojiEventsIcon from '@material-ui/icons/EmojiEvents';
+import WcIcon from '@material-ui/icons/Wc';
 
 export default function CharacterInfos(){
   const {state, dispatch}= React.useContext(Store);
@@ -29,7 +32,9 @@ export default function CharacterInfos(){
         justify='center'
         direction='column'
         alignItems='center'>
-        <img src={getProfileImage()} style={styles.profilePicture}/>
+        <img src={getProfileImage()} style={styles.profilePicture}
+        alt='profile'
+        />
         {
           state.name
           ? <Typography
@@ -46,24 +51,36 @@ export default function CharacterInfos(){
 
       <div style={styles.contentWrapper}>
         <Typography style={styles.partTitle}>
+          <WcIcon style={{fontSize:'medium'}}/>
           Gender
         </Typography>
         <GenderSwitch/>
       </div>
 
       <div style={styles.contentWrapper}>
-        <Typography style={styles.partTitle}>Credits</Typography>
+        <Typography style={styles.partTitle}>
+        <AttachMoneyIcon style={{fontSize:'medium'}}/>
+        Credits
+        </Typography>
         <Typography variant='body2'>{state.credits} GC available</Typography>
       </div>
 
       <div style={styles.contentWrapper}>
-        <Typography style={styles.partTitle}>Experience</Typography>
+        <Typography style={styles.partTitle}>
+        <EmojiEventsIcon style={{fontSize:'medium'}}/>
+        Experience
+        </Typography>
         <Typography variant='body2'>{state.points} points earned</Typography>
       </div>
 
       <div style={styles.contentWrapper}>
-        <Typography style={styles.partTitle}>Life</Typography>
-        <Typography variant='body2'>{state.life}%</Typography>
+        <Typography style={styles.partTitle}>
+        <FavoriteBorderIcon style={{fontSize:'medium'}}/>
+        Life
+        </Typography>
+        <Typography variant='body2'>
+          {state.life}%
+        </Typography>
         {
           (state.life<100 && state.credits>10) &&
           <OutlinedButton
