@@ -1,19 +1,20 @@
 import React from 'react';
 import {Grid} from '@material-ui/core';
-import ThumbnailCard from 'Components/Cards/ThumbnailCard';
+import ListCard from 'Components/Cards/ListCard';
 
 
-export default function ItemThumbnailCollection({
+export default function ListCollection({
   collection,
   clickAction,
   selected
 }){
+  console.log(selected)
   return(
     <Grid container>
     {
       collection.map((item, key)=>{
         return(
-          <ThumbnailCard
+          <ListCard
           item={item}
           selected={selected.includes(item)}
           clickAction={()=>clickAction(item)}

@@ -1,8 +1,10 @@
 import React from 'react';
-import {Typography, Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, Slide} from '@material-ui/core';
+import {Typography, Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, Slide, Grid} from '@material-ui/core';
 import {Store} from 'Store';
 import {OutlinedButton} from 'Components/Buttons';
-import {Lucky, Loser} from 'media/icons';
+import {WinDamaged, LoseDamaged, Cup, Dead, Lose} from 'media/icons';
+import CancelIcon from '@material-ui/icons/Cancel';
+import { withRouter } from 'react-router';
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
@@ -10,15 +12,13 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 
 
 const styles={
-  svgIcon:{
-    maxWidth:60
-  },
   title:{
     color:'gray'
   },
   body:{
     fontFamily:"'Montserrat', sans-serif",
-    color:'gray'
+    color:'gray',
+    textAlign:'center'
   },
   dialog:{
     maxWidth:350,
@@ -26,8 +26,28 @@ const styles={
   }
 }
 
+const getIcon = (type, color, size)=>{
+  console.log(color)
+  switch (type) {
+    case 'win':
+      return <Cup style={{maxWidth:(size || 60)}} fill={color}/>
+    case 'winDamage':
+      return <WinDamaged style={{maxWidth:(size || 60)}} fill={color}/>
+    case 'loseDamage':
+      return <LoseDamaged style={{maxWidth:(size || 60)}} fill={color}/>
+    case 'loser':
+      return <Lose style={{maxWidth:(size || 60)}} fill={color}/>
+    case 'dead':
+      return <Dead style={{maxWidth:(size || 60)}}fill={color} />
+    case 'error':
+      return <CancelIcon style={{color:color, fontSize:'xxx-large'}}/>
+    default:
+      return false
+  }
+}
 
-export default function MessageDialog() {
+
+const MessageDialog = withRouter((props)=>{
   const {state, dispatch} = React.useContext(Store);
   const [open, setOpen] = React.useState(false);
 
@@ -49,17 +69,12 @@ export default function MessageDialog() {
     setOpen(false);
   };
 
-  const getIcon = ()=>{
-    switch (state.dialog.type) {
-      case 'lucky':
-        return <Lucky style={styles.svgIcon} fill="rgb(77, 212, 195)"/>
-      case 'loser':
-        return <Loser style={styles.svgIcon} fill="rgb(77, 212, 195)"/>
-
-      default:
-        return false
-    }
+  const restartGame = ()=>{
+    dispatch({type:'RESTART_GAME'});
+    props.history.push('/')
   }
+
+
 
   return (
     <>
@@ -74,27 +89,34 @@ export default function MessageDialog() {
           PaperProps={{
             style: styles.dialog
           }}
+          disableBackdropClick={state.dead}
         >
           <DialogTitle id="alert-dialog-slide-title">
-            <Typography align='center'>{getIcon()}</Typography>
+            <Typography align='center'>{getIcon(state.dialog.type, "rgb(77, 212, 195)")}</Typography>
             <Typography align='center' style={styles.title}>{state.dialog.title}</Typography>
           </DialogTitle>
           <DialogContent>
-            <DialogContentText id="alert-dialog-slide-description">
-            <Typography
-             style={styles.body}
-             align='center'
-             >
+            <DialogContentText
+            id="alert-dialog-slide-description"
+            style={styles.body}
+            >
              {state.dialog.text}
-             </Typography>
             </DialogContentText>
           </DialogContent>
           <DialogActions>
-            <OutlinedButton
-              text='close'
-              color=''
-              clickAction={()=>handleClose()}
-            />
+            <Grid container justify='center'>
+            {
+              state.dead
+              ?<OutlinedButton
+                text='Restart Game'
+                clickAction={()=>restartGame()}
+              />
+              :<OutlinedButton
+                text='close'
+                clickAction={()=>handleClose()}
+              />
+            }
+            </Grid>
           </DialogActions>
         </Dialog>
 
@@ -102,4 +124,9 @@ export default function MessageDialog() {
     </>
 
   );
+})
+
+export{
+  MessageDialog,
+  getIcon
 }

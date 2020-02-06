@@ -3,11 +3,10 @@ import ThumbnailCard from 'Components/Cards/ThumbnailCard';
 import SlideCard from 'Components/Cards/SlideCard';
 import {Typography, Grid} from '@material-ui/core';
 
-export default function ItemSlider({collection, clickAction, selected}){
+export default function SliderCollection({collection, clickAction, selected}){
   const [current, setCurrent]=React.useState(0);
   const prevCollection = React.useRef(collection);
 
-  console.log(collection)
 
   React.useEffect(() => {
     if(collection.toString()!==prevCollection.current.toString()){
@@ -24,19 +23,6 @@ export default function ItemSlider({collection, clickAction, selected}){
   return(
     <>
       <Grid container alignItems='center' justify='center'>
-      {
-        collection[current] &&
-        <SlideCard
-          item={collection[current]}
-          prevAction={prevAction}
-          nextAction={nextAction}
-          selected={selected.includes(collection[current])}
-          clickAction={clickAction}
-        />
-      }
-      </Grid>
-
-      <Grid container alignItems='center' justify='center'>
       {collection.length>0 && collection.map((element, key)=>{
         return(
           <ThumbnailCard
@@ -47,6 +33,21 @@ export default function ItemSlider({collection, clickAction, selected}){
           />
         )
       })}
+      </Grid>
+      <Grid container alignItems='center' justify='center'>
+      {
+        collection[current] &&
+        <SlideCard
+          item={collection[current]}
+          prevAction={prevAction}
+          nextAction={nextAction}
+          selected={selected.includes(collection[current])}
+          clickAction={clickAction}
+          isFirst={current===0}
+          isLast={current===collection.length-1}
+
+        />
+      }
       </Grid>
     </>
   )

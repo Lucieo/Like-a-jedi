@@ -14,6 +14,12 @@ theme.typography.h1={
   fontFamily:'Audiowide, sans-serif'
 }
 
+theme.typography.h4={
+  color:'#f1ebd5',
+  fontSize:'x-large',
+  fontFamily:'Audiowide, sans-serif'
+}
+
 theme.typography.h2={
   color:'#f1ebd5',
   fontFamily:'Audiowide, sans-serif',

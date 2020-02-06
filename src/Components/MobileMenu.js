@@ -1,7 +1,7 @@
 import React from 'react';
 import {Drawer, ListItem, List, ListItemText, makeStyles} from '@material-ui/core';
 import {Store} from 'Store';
-import {Link} from 'react-router-dom'
+import {Link} from 'react-router-dom';
 
 const useStyles = makeStyles({
   paper: {
@@ -26,14 +26,15 @@ export default (props)=>{
       >
         <List>
           {props.items.map((el, index) => (
+          <Link to={el.value} key={index}>
             <ListItem
               button
-              component={props => <Link to={el.value} {...props} />}
               onClick={toggleMobile}
               key={index}
             >
               <ListItemText primary={el.label} classes={{primary:styles.link}} />
             </ListItem>
+          </Link>
           ))}
       </List>
     </Drawer>

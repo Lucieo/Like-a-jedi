@@ -1,9 +1,9 @@
 import React from 'react';
 import {Grid} from '@material-ui/core';
-import PanelCard from 'Components/Cards/PanelCard';
+import ThumbnailCard from 'Components/Cards/ThumbnailCard';
 
 
-export default function ItemListCollection({
+export default function ThumbnailCollection({
   collection,
   clickAction,
   selected
@@ -13,7 +13,7 @@ export default function ItemListCollection({
     {
       collection.map((item, key)=>{
         return(
-          <PanelCard
+          <ThumbnailCard
           item={item}
           selected={selected.includes(item)}
           clickAction={()=>clickAction(item)}

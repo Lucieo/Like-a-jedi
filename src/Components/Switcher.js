@@ -3,8 +3,7 @@ import {Switch, Grid} from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
 import { green, red } from '@material-ui/core/colors';
 import {Store} from 'Store';
-import rebel from 'media/icons/rebel-alliance.png';
-import galactic from 'media/icons/galactic-empire.png';
+import {RebelAlliance, GalacticEmpire} from 'media/icons';
 
 
 const CustomSwitch = withStyles({
@@ -35,10 +34,8 @@ export default function Switcher() {
     <>
       <Grid container justify="center" alignItems="center">
         <Grid item>
-          <img
-            src={rebel}
-            alt='rebel alliance'
-            style={state.mode==='jedi'?{}:styles.disabledIcon}
+          <RebelAlliance fill={state.mode==='jedi'?'#f1ebd5':'gray'}
+          style={{minWidth:30}}
           />
         </Grid>
         <Grid item>
@@ -50,11 +47,10 @@ export default function Switcher() {
           />
         </Grid>
         <Grid item>
-          <img
-            src={galactic}
-            alt='galactic empire'
-            style={state.mode==='dark'?{}:styles.disabledIcon}
+          <GalacticEmpire fill={state.mode==='dark'?'#f1ebd5':'gray'}
+          style={{minWidth:30}}
           />
+
         </Grid>
       </Grid>
     </>

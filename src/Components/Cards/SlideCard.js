@@ -46,19 +46,30 @@ export default function SlideCard({
   prevAction,
   selectAction,
   selected,
-  clickAction}){
+  clickAction,
+  isLast,
+  isFirst
+}){
   const SvgIcon = item.image
   return(
     <Grid container alignItems='center' justify='center'>
       <Grid item xs={1}>
-        <ArrowBackIosIcon
-        onClick={()=>prevAction()}
-        style={styles.arrows}
-        />
+        {
+          !isFirst &&
+          <ArrowBackIosIcon
+          onClick={()=>prevAction()}
+          style={styles.arrows}
+          />
+        }
       </Grid>
 
       <Grid item xs={8} style={styles.centered}>
         <Paper style={styles.paper}>
+          <OutlinedButton
+            text={selected ? 'SELL' : 'BUY'}
+            color='rgb(77, 212, 195)'
+            clickAction={()=>clickAction(item)}
+          />
           <Typography align='center' style={{minHeight:21}}>
             {selected &&'SELECTED'}
           </Typography>
@@ -73,18 +84,17 @@ export default function SlideCard({
 
           <AttributesList item={item} attributes={['armor','attack', 'price']}/>
 
-          <OutlinedButton
-            text={selected ? 'UNSELECT' : 'SELECT'}
-            color='rgb(77, 212, 195)'
-            clickAction={()=>clickAction(item)}
-          />
         </Paper>
       </Grid>
 
       <Grid item xs={1} style={{textAlign:'center'}}>
-        <ArrowForwardIosIcon onClick={()=>nextAction()}
-        style={styles.arrows}
-        />
+        {
+          !isLast &&
+          <ArrowForwardIosIcon
+            onClick={()=>nextAction()}
+            style={styles.arrows}
+          />
+        }
       </Grid>
     </Grid>
   )

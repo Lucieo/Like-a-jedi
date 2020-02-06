@@ -52,6 +52,10 @@ export default function ListCard({
           </Grid>
           <Grid item sm={2}>
             <Typography gutterBottom variant="h6" className={classes.cardText}>
+              {selected
+                ? 'sell '
+                : 'buy '
+              }
               {item.price} GC
             </Typography>
           </Grid>

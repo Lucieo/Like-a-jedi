@@ -19,7 +19,10 @@ const initialState = {
   gender:'female',
   credits:500,
   points:0,
-  dialog:{title:'You are such a lucky one!', text:'Mission did go well. Not a single scratch! Congratulation you are earning 100 points of experience!', type:'lucky'}
+  dialog:undefined,
+  life:80,
+  location:'thyferra',
+  dead:false
 };
 
 let newState;
@@ -27,6 +30,22 @@ let newState;
 
 function reducer(state, action) {
   switch (action.type) {
+    case 'RESTART_GAME':
+      return initialState
+
+    case 'INCREASE_VALUE':
+      newState={...state}
+      let newValue = state[action.field]+action.value
+      action.max && (newValue = Math.min(newValue, action.max))
+      newState[action.field] = newValue
+      action.price && (newState['credits']=newState.credits-action.price)
+      return newState
+
+    case 'DECREASE_VALUE':
+      newState={...state}
+      newState[action.field] = Math.max(newState[action.field]-action.value, 0)
+      return newState
+
     case 'TOGGLE_MODE':
       const mode = (state.mode === 'jedi' ? 'dark' : 'jedi');
       return {...state, mode}
@@ -50,22 +69,21 @@ function reducer(state, action) {
         credits:state.credits - action.payload.price
       }
 
-    case 'ADD_MESSAGE':
-      return {...state, message:action.payload}
-
     case 'ADD_INFO':
       newState={...state}
       newState[action.field]=action.payload
       return newState
 
+    case 'ADD_TO_LIST':
+      newState={...state}
+      newState[action.field]=[...newState[action.field], action.value]
+      return newState
+
     case 'TOGGLE_INFO':
       newState={...state}
-      if(action.field in newState){
-        newState[action.field]=(!state[action.field])
-      }
-      else{
-        newState[action.field]=true
-      }
+      action.field in newState
+      ? newState[action.field]=(!state[action.field])
+      :newState[action.field]=true
       return newState
 
     default:

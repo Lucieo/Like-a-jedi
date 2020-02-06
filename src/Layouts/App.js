@@ -8,10 +8,10 @@ import Profile from 'Layouts/Profile';
 import Missions from 'Layouts/Missions';
 import Funfacts from 'Layouts/Funfacts';
 import MessageSnackbar from 'Components/Popups/MessageSnackBar';
-import MessageDialog from 'Components/Popups/MessageDialog';
-import "Styles/App.css";
+import {MessageDialog} from 'Components/Popups/MessageDialog';
+import "Style/App.css";
 import {ThemeProvider } from '@material-ui/core/styles';
-import theme from 'Styles/Theme';
+import theme from 'Style/Theme';
 
 
 function App() {

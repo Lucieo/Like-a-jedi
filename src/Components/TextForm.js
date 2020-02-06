@@ -1,10 +1,12 @@
 import React from 'react';
-import {TextField, FormControl, Button, makeStyles} from '@material-ui/core';
+import {TextField, FormControl, Button, Grid, makeStyles} from '@material-ui/core';
 import {Store} from 'Store';
 import {OutlinedButton} from 'Components/Buttons';
+import styles from 'Style/AppStyle';
 
 const useStyles = makeStyles(theme => ({
   root: {
+    maxWidth:300,
     '& > *': {
       margin: theme.spacing(1),
       fontFamily:'Audiowide, sans-serif',
@@ -40,19 +42,29 @@ export default function TextForm(props) {
   const handleChange = event => {
     setValue(event.target.value);
   };
+  
 
   return (
-    <div className={classes.root}>
-      <div>
-        <TextField
-          className={classes.root}
-          id="text-field"
-          variant="outlined"
-          onChange={handleChange}
-          inputProps={{ maxLength: 20, placeholder:props.placeholder, style:{background:props.color} }}
-        />
-      </div>
-      <OutlinedButton variant='outlined' clickAction={handleClick} text='Validate' color='#f1ebd5'/>
-    </div>
+    <Grid
+    container
+    className={classes.root}
+    justify='center'
+    >
+      <TextField
+        className={classes.root}
+        id="text-field"
+        variant="outlined"
+        onChange={handleChange}
+        inputProps={{
+          maxLength: 20,
+          placeholder:props.placeholder, style:{background:props.color}
+        }}
+      />
+      <OutlinedButton
+      variant='outlined'
+      clickAction={handleClick}
+      text='Validate'
+      color='#f1ebd5'/>
+    </Grid>
   );
 }

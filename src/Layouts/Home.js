@@ -6,47 +6,7 @@ import TextForm from 'Components/TextForm';
 import {OutlinedButton} from 'Components/Buttons';
 import StarsMovie from 'media/Stars.mp4';
 import StarsBg from 'media/spacebg.jpg';
-
-const styles={
-  videoBg:{
-    position: 'fixed',
-    top: 0,
-    right: 0,
-    bottom: 0,
-    left: 0,
-    overflow: 'hidden',
-    zIndex: -100
-  },
-  video:{
-    position: 'absolute',
-    top: 0,
-    left: 0,
-    width: 'auto',
-    height: '100%'
-  },
-  contentWrapper:{
-    display:'flex',
-    alignItems:'center',
-    justifyContent:'center',
-    flexDirection:'column',
-    height:'calc(100vh - 120px)',
-    textAlign:'center'
-  },
-  offwhite:{
-    color:'#f1ebd5'
-  },
-  logo:{
-    maxWidth:400,
-    width:'100%'
-  },
-  welcome:{
-    overflowWrap:'break-word'
-  }
-}
-
-
-
-
+import styles from 'Style/AppStyle';
 
 export default function Home(props){
   const {state, dispatch} = React.useContext(Store);
@@ -72,7 +32,7 @@ export default function Home(props){
       clickAction={()=>props.history.push('/profile')}
       />
     : <>
-      <Typography style={styles.offwhite}>
+      <Typography>
       What's your name?
       </Typography>
       <TextForm fieldname='name'/>
@@ -81,16 +41,21 @@ export default function Home(props){
 
     return(
       <div>
-        <div style={styles.videoBg}>
-          <video autoPlay loop muted poster={StarsBg} id="bgvid" style={styles.video} src={StarsMovie}/>
-        </div>
-        <div style={styles.contentWrapper}>
-          <img src={logo} alt='logo star wars' style={styles.logo}/>
-          <Typography variant='h2' align='center' style={styles.welcome}>
+          <video autoPlay loop muted poster={StarsBg} style={styles.videoBg} src={StarsMovie}/>
+        <Grid
+          container
+          justify='center'
+          alignItems='center'
+          direction='column'
+          style={{...styles.contentWrapper,...styles.fullHeight}}>
+          <img src={logo} alt='logo star wars' style={{width:'100%', maxWidth:400}}/>
+          <div>
+          <Typography variant='h2' align='center' style={styles.breakWord}>
             {getWelcomeMessage()}
           </Typography>
+          </div>
             {getAction()}
-        </div>
+        </Grid>
       </div>
 
     )

@@ -13,7 +13,7 @@ const OutlinedButton=(props)=> {
         fontFamily:'Audiowide, sans-serif',
         borderColor:(props.color || "rgb(77, 212, 195)"),
         borderRadius:20,
-        margin:'0 auto',
+        margin:5,
         background:props.active? (props.color || "rgb(77, 212, 195)"): 'transparent',
       }}
       onClick={()=>props.clickAction()}

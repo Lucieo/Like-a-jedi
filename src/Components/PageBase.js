@@ -1,31 +1,22 @@
 import React from 'react';
 import {Store} from 'Store';
-import {Typography, Grid} from '@material-ui/core'
+import {Typography, Grid} from '@material-ui/core';
+import styles from 'Style/AppStyle';
 
-const styles={
-  pad20:{
-    padding:'20px 0px'
-  },
-  partWrapper:{
-    maxWidth:800,
-    padding:20,
-    margin:'0 auto'
-  }
-}
 
-export default function BuyingPagesBase(props){
+export default function PageBase(props){
   const {state, dispatch} = React.useContext(Store);
 
   return(
-    <div style={styles.partWrapper}>
+    <div style={styles.pageWrapper}>
       <Grid container justify='space-between' alignItems='center'>
         <Grid item>
-          <Typography variant='h3' style={styles.pad20}>
+          <Typography variant='h3' style={styles.partTitle}>
             {props.title}
           </Typography>
         </Grid>
         <Grid item>
-          <Typography>{state.credits} GC available</Typography>
+          <Typography>{state.credits} GC available / {state.life}% health</Typography>
         </Grid>
       </Grid>
         {props.children}

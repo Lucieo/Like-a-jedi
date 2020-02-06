@@ -3,6 +3,9 @@ import {Grid, ExpansionPanel, ExpansionPanelSummary, ExpansionPanelDetails, Typo
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import StarIcon from '@material-ui/icons/Star';
 import {OutlinedButton} from 'Components/Buttons';
+import {Cup} from 'media/icons';
+import AttributesList from 'Components/AttributesList';
+import {getIcon} from 'Components/Popups/MessageDialog';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -23,44 +26,64 @@ const useStyles = makeStyles(theme => ({
   },
   missionBody:{
     padding:20
+  },
+  deactivatedPanel:{
+    border:'1px solid gray'
+  },
+  deactivatedText:{
+    color:'gray'
   }
 }));
 
-export default function ExpansionCard({item}) {
+export default function ExpansionCard({
+  item,
+  realized,
+  clickAction,
+}) {
   const classes = useStyles();
+  const won = (realized && ['win'].includes(realized.status))? true : false
 
   return (
   <Grid item xs={12} className={classes.root}>
-    <ExpansionPanel className={classes.panel}>
+    <ExpansionPanel className={realized? `${classes.panel} ${classes.deactivatedPanel}` :classes.panel}>
       <ExpansionPanelSummary
-        expandIcon={<ExpandMoreIcon style={{color:'rgb(77, 212, 195)'}} />}
+        expandIcon={<ExpandMoreIcon style={realized? {color:'gray'} :{color:'rgb(77, 212, 195)'}} />}
         aria-controls="panel1a-content"
         id="panel1a-header"
       >
       <Grid container justify='space-between'>
-        <Grid item>
-          <Typography className={classes.heading}>
-            {item.title}
-          </Typography>
+        <Grid item xs={8}>
+          <Grid container alignItems='center'>
+            <Typography className={realized?`${classes.heading} ${classes.deactivatedText}`:classes.heading}>
+              {item.title}
+            </Typography>
+            {won && <Cup fill='rgb(77, 212, 195)' style={{minWidth:30}}/>}
+          </Grid>
         </Grid>
         <Grid item>
-          {[...Array(item.level)].map((el,key)=><StarIcon key={key} style={{color:'rgb(77, 212, 195)'}}/>)}
+          {[...Array(item.level)].map((el,key)=><StarIcon key={key} style={realized? {color:'gray'} :{color:'rgb(77, 212, 195)'}}/>)}
         </Grid>
       </Grid>
       </ExpansionPanelSummary>
       <ExpansionPanelDetails>
         <Grid container>
           <Grid item>
+            <AttributesList attributes={['location','credit-bonus', 'experience-bonus']} item={item}/>
             <img src={item.image} className={classes.image}/>
           </Grid>
           <Grid item>
             <Typography variant='body2' className={classes.missionBody}>
               {item.detail}
             </Typography>
-            <OutlinedButton
-              text='Start Mission'
-              color='rgb(77, 212, 195)'
-            />
+            {
+              realized
+              ?<Typography>{getIcon(realized.status, "#f1ebd5")} MISSION DONE</Typography>
+              :<OutlinedButton
+                text='Start Mission'
+                color='rgb(77, 212, 195)'
+                clickAction={clickAction}
+              />
+            }
           </Grid>
         </Grid>
       </ExpansionPanelDetails>

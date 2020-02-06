@@ -1,11 +1,8 @@
 import React from 'react';
-import ItemSliderCollection from 'Components/Collections/ItemSliderCollection';
-import ItemListCollection from 'Components/Collections/ItemListCollection';
-import ItemThumbnailCollection from 'Components/Collections/ItemThumbnailCollection';
-import ItemPanelCollection from 'Components/Collections/ItemPanelCollection';
+import {SliderCollection, PanelCollection, ListCollection, ThumbnailCollection} from 'Components/Collections';
 import {Store} from 'Store';
 import {Grid, Typography} from '@material-ui/core';
-import {getRandomInt, getTotalPoints} from 'helpers';
+import {launchMission} from 'helpers';
 
 const actions={
   'ship':'TOGGLE_SHIP',
@@ -36,15 +33,8 @@ export default function ItemsCollection ({
       return toggleItem(item, isItemSelected);
     }
     else if(collectionName==='mission'){
-      return selectMission(item);
+      return launchMission(item, state, dispatch);
     }
-  }
-
-  const selectMission =(item)=>{
-    const luck = getRandomInt(20);
-    const totalArmor = getTotalPoints([state.equipment, state.ship], 'armor');
-    const totalAttack = getTotalPoints([state.equipment, state.ship], 'attack');
-
   }
 
   const toggleItem=(item, selected)=>{
@@ -74,26 +64,26 @@ export default function ItemsCollection ({
   const renderCollection = ()=>{
     switch (collectionType) {
       case 'slider':
-        return <ItemSliderCollection
+        return <SliderCollection
                 collection={getCollection()}
                 clickAction={(item)=>getClickAction(item)}
                 selected={state[collectionName]}
               />
       case 'thumbnails':
-        return <ItemThumbnailCollection
+        return <ThumbnailCollection
                 collection={getCollection()}
                 clickAction={(item)=>getClickAction(item)}
                 selected={state[collectionName]}
               />
       case 'cardList':
-        return <ItemListCollection
+        return <ListCollection
                 collection={getCollection()}
                 clickAction={(item)=>getClickAction(item)}
                 selected={state[collectionName]}
               />
 
       case 'panel':
-        return <ItemPanelCollection
+        return <PanelCollection
                 collection={getCollection()}
                 clickAction={(item)=>getClickAction(item)}
                 selected={state[collectionName]}

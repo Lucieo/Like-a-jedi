@@ -31,8 +31,8 @@ export default function MessageSnackbar() {
     <div>
       <Snackbar
         anchorOrigin={{
-          vertical: 'bottom',
-          horizontal: 'left',
+          vertical: 'top',
+          horizontal: 'center',
         }}
         open={open}
         autoHideDuration={3000}

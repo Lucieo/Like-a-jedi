@@ -1,10 +1,10 @@
 import thyferra from 'media/missions/thyferra.jpeg';
 import yavinfour from 'media/missions/yavinfour.jpg';
 import delrakkin from 'media/missions/delrakkin.jpg';
-import tattoine from 'media/missions/tattoine.png';
+import tattoine from 'media/missions/tattoine.jpg';
 import togoria from 'media/missions/togoria.jpg';
 import boonda from 'media/missions/boonda.jpeg';
-import vactooine from 'media/missions/vactooine.jpeg';
+import vactooine from 'media/missions/vactooine.jpg';
 
 const missions=[
   {
@@ -13,15 +13,23 @@ const missions=[
     mode:'jedi',
     location:'thyferra',
     level:1,
-    image:thyferra
+    image:thyferra,
+    'credit-bonus':300,
+    'experience-bonus':50,
+    attack:40,
+    armor:50
   },
   {
-    title:'Assault on Yavin Four',
-    detail:'The first Death Star has been destroyed. But the Empire remains. A rebel base has been identified on Yavin Four. Your mission: Launch the assault on the base and capture all rebels… at any cost.',
+    title:'Assault on Thyferra',
+    detail:'The first Death Star has been destroyed. But the Empire remains. A rebel base has been identified on Thyferra. Your mission: Launch the assault on the base and capture all rebels… at any cost.',
     mode:'dark',
-    location:'yavin four',
-    level:2,
-    image:yavinfour
+    location:'thyferra',
+    level:1,
+    image:thyferra,
+    'credit-bonus':275,
+    'experience-bonus':90,
+    attack:50,
+    armor:40
   },
   {
     title:'Attack on Delrakkin',
@@ -29,7 +37,11 @@ const missions=[
     mode:'jedi',
     location:'delrakkin',
     level:2,
-    image:delrakkin
+    image:delrakkin,
+    'credit-bonus':650,
+    'experience-bonus':110,
+    attack:80,
+    armor:100
   },
   {
     title:'The Hunt for Han Solo',
@@ -37,7 +49,11 @@ const missions=[
     mode:'dark',
     location:'tattoine',
     level:2,
-    image:tattoine
+    image:tattoine,
+    'credit-bonus':700,
+    'experience-bonus':120,
+    attack:100,
+    armor:110
   },
   {
     title:'Togorian Trap',
@@ -45,7 +61,9 @@ const missions=[
     mode:'dark',
     location:'togoria',
     level:3,
-    image:togoria
+    image:togoria,
+    'credit-bonus':900,
+    'experience-bonus':170
   },
   {
     title:'Revolt of the Battle Droids',
@@ -53,7 +71,9 @@ const missions=[
     mode:'dark',
     location:'boonda',
     level:3,
-    image:boonda
+    image:boonda,
+    'credit-bonus':950,
+    'experience-bonus':180
   },
   {
     title:'The Vactooine Disaster',
@@ -61,7 +81,9 @@ const missions=[
     mode:'jedi',
     location:'vactooine',
     level:3,
-    image:vactooine
+    image:vactooine,
+    'credit-bonus':900,
+    'experience-bonus':200
   }
 
 
