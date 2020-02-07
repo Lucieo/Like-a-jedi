@@ -1,5 +1,5 @@
 import React from 'react';
-import {Route} from 'react-router-dom';
+import {Route, HashRouter} from 'react-router-dom';
 import {Home, Header, Equipment, Spaceships, Profile, Missions, Funfacts, Credits} from 'Layouts';
 import MessageSnackbar from 'Components/Popups/MessageSnackBar';
 import {MessageDialog} from 'Components/Popups/MessageDialog';
@@ -12,6 +12,7 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <div>
+      <HashRouter basename='/'>
         <Header/>
         <Route path='/' exact component={Home}/>
         <Route path='/equipment' component={Equipment}/>
@@ -22,6 +23,7 @@ function App() {
         <Route path='/credits' component={Credits}/>
         <MessageSnackbar/>
         <MessageDialog/>
+      </HashRouter>
       </div>
     </ThemeProvider>
   );
