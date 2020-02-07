@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "cdb319eaa47fb506e26b07280abdd118",
+    "revision": "824e06a6615e4d6482b2e0367f5d32bd",
     "url": "/Like-a-jedi/index.html"
   },
   {
-    "revision": "c23c2a1e3891e3aff75b",
+    "revision": "b0c2e899a0dfab64fde3",
     "url": "/Like-a-jedi/static/css/main.aa44f140.chunk.css"
   },
   {
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/Like-a-jedi/static/js/2.545486fe.chunk.js.LICENSE"
   },
   {
-    "revision": "c23c2a1e3891e3aff75b",
-    "url": "/Like-a-jedi/static/js/main.03a56bfd.chunk.js"
+    "revision": "b0c2e899a0dfab64fde3",
+    "url": "/Like-a-jedi/static/js/main.6954fec0.chunk.js"
   },
   {
     "revision": "e6ebc1397e1891fa8b38",
