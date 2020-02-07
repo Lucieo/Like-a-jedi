@@ -30,7 +30,7 @@ export default function Switcher() {
       <Grid container justify="center" alignItems="center">
         <Grid item>
           <RebelAlliance fill={state.mode==='jedi'?'#f1ebd5':'gray'}
-          style={{minWidth:30}}
+          style={{height:30}}
           />
         </Grid>
         <Grid item>
@@ -43,7 +43,7 @@ export default function Switcher() {
         </Grid>
         <Grid item>
           <GalacticEmpire fill={state.mode==='dark'?'#f1ebd5':'gray'}
-          style={{minWidth:30}}
+          style={{height:30}}
           />
 
         </Grid>

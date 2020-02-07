@@ -11,7 +11,8 @@ const styles={
     display: 'inline-block',
     margin: 10,
     cursor:'pointer',
-    border:"1px solid #2f2f2f"
+    border:"1px solid #2f2f2f",
+    textAlign:'center'
   },
   svgIcon:{
     maxWidth:'100%',
