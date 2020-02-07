@@ -1,10 +1,10 @@
 import React from 'react';
 import {Store} from 'Store';
 
-export default ChildComponent =>{
-  const CheckMode = (props)=>{
+export default function withCheckMode(ChildComponent){
+  const WithCheckMode = (props)=>{
     const {state, dispatch} = React.useContext(Store);
-    
+
     React.useEffect(()=>{
       if(state.mode!=='jedi'){
         props.history.push('/');
@@ -14,5 +14,5 @@ export default ChildComponent =>{
 
     return <ChildComponent {...props}/>;
   }
-  return CheckMode;
+  return WithCheckMode;
 }

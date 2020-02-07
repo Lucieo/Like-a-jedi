@@ -1,5 +1,5 @@
 import React from 'react';
-import CheckMode from 'Components/CheckMode';
+import withCheckMode from 'Components/CheckMode';
 import {Typography, Grid} from '@material-ui/core';
 import facts from 'Data/facts';
 import PageBase from 'Components/PageBase';
@@ -44,4 +44,4 @@ function Funfacts(props){
     )
 }
 
-export default CheckMode(Funfacts)
+export default withCheckMode(Funfacts)
