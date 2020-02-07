@@ -5,7 +5,7 @@ import styles from 'Style/AppStyle';
 
 
 export default function PageBase(props){
-  const {state, dispatch} = React.useContext(Store);
+  const {state} = React.useContext(Store);
 
   return(
     <div style={styles.pageWrapper}>

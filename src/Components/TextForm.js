@@ -27,7 +27,7 @@ const useStyles = makeStyles(theme => ({
 
 export default function TextForm(props) {
   const classes = useStyles();
-  const {state, dispatch} = React.useContext(Store);
+  const {dispatch} = React.useContext(Store);
   const [name, setValue] = React.useState(undefined);
 
   const handleClick=()=>{

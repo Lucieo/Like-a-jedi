@@ -10,7 +10,7 @@ import styles from 'Style/AppStyle';
 import {Link} from 'react-router-dom';
 
 export default function Home(props){
-  const {state, dispatch} = React.useContext(Store);
+  const {state} = React.useContext(Store);
 
   const getWelcomeMessage=()=>{
     if(state.mode==='jedi'){

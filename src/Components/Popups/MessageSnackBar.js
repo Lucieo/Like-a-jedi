@@ -13,11 +13,7 @@ export default function MessageSnackbar() {
     if(state.message!==undefined){
       setOpen(true);
     }
-  })
-
-  const handleClick = () => {
-    setOpen(true);
-  };
+  }, [state.message])
 
   const handleClose = (event, reason) => {
     if (reason === 'clickaway') {
@@ -40,7 +36,7 @@ export default function MessageSnackbar() {
         message={state.message}
         action={
           <React.Fragment>
-            <img src={porg}/>
+            <img src={porg} alt='porg'/>
             <IconButton size="small" aria-label="close" color="inherit" onClick={handleClose}>
               <CloseIcon fontSize="small" />
             </IconButton>

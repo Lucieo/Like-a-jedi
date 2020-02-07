@@ -48,7 +48,7 @@ const useStyles = makeStyles(theme=>({
 
 export default withRouter((props)=>{
   const classes = useStyles();
-  const {state, dispatch} = React.useContext(Store);
+  const {dispatch} = React.useContext(Store);
   const handleMobileMenu = ()=>{
     dispatch({type:'TOGGLE_INFO', field:'mobileMenuOpen'})
   }

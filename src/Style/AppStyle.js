@@ -1,6 +1,4 @@
 const blue = '#4dd4c3';
-const offwhite ='#f1ebd5';
-const darkGray = '#1d1d1d';
 
 const styles ={
   profilePicture:{

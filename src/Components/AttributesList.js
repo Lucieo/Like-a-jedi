@@ -7,13 +7,10 @@ export default function AttributeList({item, attributes}){
     <List>
     {
       attributes.map((attribute,key)=>{
-        if(attribute in item && item[attribute]!==undefined){
-          return(
+        return (attribute in item && item[attribute]!==undefined) &&
             <ListItem key={key}>
               <ListItemText primary={`${attribute} : ${item[attribute]}`} />
             </ListItem>
-          )
-        }
       })
     }
     </List>
